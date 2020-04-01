@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"
+                controller="HelloWorld_Ctrl">
+                
+    <aura:attribute name="cmpFooRecs" type="foo_Record__c[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:iteration items="{!v.cmpFooRecs}" var="rec">
+
+        <lightning:layout>
+
+            <lightning:layoutItem size="3" padding="around-small">
+                <!-- <lightning:formattedText value="{!rec.Id}"/> -->
+                <lightning:input readonly="true" value="{!rec.Id}" label="SF Id"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem size="3" padding="around-small">
+                <lightning:input label="Foo Record Name" value="{!rec.Name}"/>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem size="3" padding="around-small">
+                <!-- <lightning:formattedText value="{!rec.CreatedDate}"/> -->
+                <lightning:input readonly="true" value="{!rec.CreatedDate}" label="Created Date"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem size="3" padding="around-small">
+                <!-- <lightning:formattedText value="{!rec.LastModifiedDate}"/> -->
+                <lightning:input readonly="true" value="{!rec.LastModifiedDate}" label="Last Modified Date"/>
+            </lightning:layoutItem>
+
+        </lightning:layout>
+
+    </aura:iteration>
+
+    <lightning:button variant="brand" label="Upsert Foo Records" title="Upsert Foo Records" onclick="{! c.upsFooRecs }" />
+    <lightning:button variant="brand" label="Add Record" title="Add Record" onclick="{! c.addRec }" />
+
+</aura:component>
